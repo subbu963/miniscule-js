@@ -1,12 +1,22 @@
-import { ImportMap } from '@jspm/import-map';
+import { ImportMap, IImportMap } from '@jspm/import-map';
 import fs from 'node:fs/promises';
+import { InitializeHook, LoadHook, ResolveHook } from 'node:module';
 
-const config = {};
-function shouldResolve(specifier) {
-  const { importsToResolve } = config;
-  return importsToResolve.some((r) => r.test(specifier));
+export interface IConfig {
+  importMapUrl?: string;
+  importsToResolve?: RegExp[];
+  importMap: ImportMap;
 }
-async function getImportMap(url) {
+export type IInitializeOpts = IConfig & {
+  importMap?: IImportMap;
+  importsToResolve?: string[];
+};
+let config:IConfig;
+function shouldResolve(specifier: string): boolean {
+  const { importsToResolve } = config;
+  return (importsToResolve || []).some((r) => r.test(specifier));
+}
+async function getImportMap(url: string): Promise<ImportMap> {
   try {
     let importMapJson = null;
 
@@ -20,23 +30,21 @@ async function getImportMap(url) {
     }
     return new ImportMap({map: importMapJson});
   } catch (error) {
-    console.error(error, error.stack)
     throw `Unable to get import map from ${url}`;
   }
 }
-export async function initialize({ importMapUrl, importsToResolve = [], importMap = null } ) {
+export const initialize:InitializeHook = async function ({ importMapUrl, importsToResolve = [], importMap }: IInitializeOpts ) {
   if(!importMapUrl && !importMap) {
     throw 'Atleast one of importMapUrl or importMap need to be set';
   }
 
-  importsToResolve = importsToResolve.map(i => new RegExp(i, 'gi'));
   Object.assign(config, {
     importMapUrl,
-    importsToResolve,
-    importMap: importMap || await getImportMap(importMapUrl),
+    importsToResolve: importsToResolve.map(i => new RegExp(i, 'gi')),
+    importMap: importMap ? new ImportMap({map: importMap}) : await getImportMap(importMapUrl as string),
   });
 }
-export async function load(url, context, nextLoad) {
+export const load:LoadHook = async function load(url: string, context, nextLoad) {
   if(url.startsWith('http')) {
     const module = await fetch(url).then(r => r.text());
     return {
@@ -47,7 +55,7 @@ export async function load(url, context, nextLoad) {
   }
   return nextLoad(url);
 }
-export async function resolve(specifier, context, nextResolve) {
+export const resolve:ResolveHook = async function resolve(specifier, context, nextResolve) {
     const useImportMapResolver = shouldResolve(specifier);
     if(useImportMapResolver) {
       const { importMap } = config;
