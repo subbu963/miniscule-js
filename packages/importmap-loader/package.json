@@ -1,0 +1,10 @@
+{
+  "name": "@miniscule-js/importmap-loader",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@jspm/import-map": "^1.0.8"
+  }
+}
