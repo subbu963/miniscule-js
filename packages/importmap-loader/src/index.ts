@@ -1,6 +1,6 @@
-import fs from "node:fs/promises";
-import type { InitializeHook, LoadHook, ResolveHook } from "node:module";
-import { type IImportMap, ImportMap } from "@jspm/import-map";
+import fs from 'node:fs/promises';
+import type { InitializeHook, LoadHook, ResolveHook } from 'node:module';
+import { type IImportMap, ImportMap } from '@jspm/import-map';
 
 export interface IConfig {
 	importMapUrl?: string;
@@ -22,14 +22,14 @@ async function getImportMap(url: string): Promise<ImportMap> {
 	try {
 		let importMapJson = null;
 
-		if (url.startsWith("http")) {
-			console.log("here1");
+		if (url.startsWith('http')) {
+			console.log('here1');
 			importMapJson = await fetch(url).then((r) => r.json());
 		} else {
-			console.log("here2");
-			console.log("getting import maps", url);
+			console.log('here2');
+			console.log('getting import maps', url);
 
-			importMapJson = JSON.parse(await fs.readFile(url, { encoding: "utf-8" }));
+			importMapJson = JSON.parse(await fs.readFile(url, { encoding: 'utf-8' }));
 		}
 		return new ImportMap({ map: importMapJson });
 	} catch (error) {
@@ -42,12 +42,12 @@ export const initialize: InitializeHook = async ({
 	importMap,
 }: IInitializeOpts) => {
 	if (!importMapUrl && !importMap) {
-		throw "Atleast one of importMapUrl or importMap need to be set";
+		throw 'Atleast one of importMapUrl or importMap need to be set';
 	}
 
 	config = {
 		importMapUrl,
-		importsToResolve: importsToResolve.map((i) => new RegExp(i, "gi")),
+		importsToResolve: importsToResolve.map((i) => new RegExp(i, 'gi')),
 		importMap: importMap
 			? new ImportMap({ map: importMap })
 			: await getImportMap(importMapUrl as string),
@@ -58,10 +58,10 @@ export const load: LoadHook = async function load(
 	context,
 	nextLoad,
 ) {
-	if (url.startsWith("http")) {
+	if (url.startsWith('http')) {
 		const module = await fetch(url).then((r) => r.text());
 		return {
-			format: "module",
+			format: 'module',
 			shortCircuit: true,
 			source: module,
 		};

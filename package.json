@@ -3,9 +3,7 @@
 	"private": true,
 	"scripts": {
 		"build": "turbo build",
-		"dev": "turbo dev",
-		"check": "biome check",
-		"check:write": "yarn run check --write"
+		"dev": "turbo dev"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.2",
