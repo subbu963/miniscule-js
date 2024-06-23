@@ -4,7 +4,8 @@
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"lint": "turbo lint"
+		"check": "biome check",
+		"check:write": "yarn run check --write"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.2",
