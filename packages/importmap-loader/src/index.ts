@@ -7,10 +7,12 @@ export interface IConfig {
 	importsToResolve?: RegExp[];
 	importMap: ImportMap;
 }
+
 export type IInitializeOpts = IConfig & {
 	importMap?: IImportMap;
 	importsToResolve?: string[];
 };
+
 let config: IConfig;
 function shouldResolve(specifier: string): boolean {
 	const { importsToResolve } = config;
@@ -25,7 +27,8 @@ async function getImportMap(url: string): Promise<ImportMap> {
 			importMapJson = await fetch(url).then((r) => r.json());
 		} else {
 			console.log("here2");
-			console.log("getting import map", url);
+			console.log("getting import maps", url);
+
 			importMapJson = JSON.parse(await fs.readFile(url, { encoding: "utf-8" }));
 		}
 		return new ImportMap({ map: importMapJson });

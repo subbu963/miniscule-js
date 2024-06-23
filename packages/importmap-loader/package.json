@@ -14,7 +14,6 @@
 	},
 	"devDependencies": {
 		"@miniscule-js/typescript-config": "*",
-		"@miniscule-js/biome-config": "*",
 		"@types/node": "^20.11.24",
 		"typescript": "^5.3.3"
 	}

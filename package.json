@@ -1,23 +1,21 @@
 {
-  "name": "miniscule-js",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@miniscule-js/typescript-config": "*",
-    "prettier": "^3.2.5",
-    "turbo": "^2.0.3"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "yarn@1.22.22",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+	"name": "miniscule-js",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.2",
+		"@miniscule-js/typescript-config": "*",
+		"lefthook": "^1.6.18",
+		"prettier": "^3.2.5",
+		"turbo": "^2.0.3"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"packageManager": "yarn@1.22.22",
+	"workspaces": ["apps/*", "packages/*"]
 }
