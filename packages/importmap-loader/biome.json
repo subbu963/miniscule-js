@@ -1,0 +1,5 @@
+{
+    "extends": [
+        "@miniscule-js/biome-config/biome.json"
+    ]
+}

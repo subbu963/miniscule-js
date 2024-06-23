@@ -1,15 +1,9 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "always"
-    },
-    "eslint.workingDirectories": [
-        {
-            "directory": "./packages/importmap-loader",
-            "changeProcessCWD": true
-        }
-    ],
-    "editor.formatOnSave": true,
-    "eslint.validate": ["javascript"],
-    "eslint.codeActionsOnSave.rules": null,
-    "eslint.format.enable": true
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	}
 }
