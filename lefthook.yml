@@ -7,6 +7,6 @@ prepare-commit-msg:
   commands:
     commitizen:
       interactive: true
-      run: cz
+      run: exec < /dev/tty && node_modules/.bin/cz --hook || true
       env:
         LEFTHOOK: 0
