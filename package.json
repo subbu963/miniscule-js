@@ -7,6 +7,8 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.2",
+		"@commitlint/cli": "^19.3.0",
+		"@commitlint/config-conventional": "^19.2.2",
 		"@miniscule-js/typescript-config": "*",
 		"lefthook": "^1.6.18",
 		"prettier": "^3.2.5",
