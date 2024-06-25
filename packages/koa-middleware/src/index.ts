@@ -37,8 +37,8 @@ const middleware = (config: IConfig): Koa.Middleware => {
         ) {
             throw 'koa-bodyparser not included';
         }
-        // @ts-ignore
-        ctx.body = await app.handler(MinisculeHttpRequest.fromKoa(ctx));
+        await app.handler(MinisculeHttpRequest.fromKoa(ctx));
+        await next();
     };
 };
 export default middleware;
