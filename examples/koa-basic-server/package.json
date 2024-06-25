@@ -1,0 +1,17 @@
+{
+	"name": "koa-example",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"license": "MIT",
+	"scripts": {
+		"dev": "node --import ./src/bootstrap.js ./src/index.js"
+	},
+	"dependencies": {
+		"@koa/bodyparser": "^5.1.1",
+		"@miniscule-js/importmap-loader": "*",
+		"@miniscule-js/koa-middleware": "*",
+		"koa": "^2.15.3"
+	},
+	"devDependencies": {}
+}

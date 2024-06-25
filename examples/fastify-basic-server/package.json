@@ -1,0 +1,19 @@
+{
+	"name": "fastify-example",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"license": "MIT",
+	"scripts": {
+		"dev1": "node --import ./src/bootstrap.js ./src/index.js"
+	},
+	"dependencies": {
+		"@sinclair/typebox": "^0.23.5",
+		"ajv": "^8.11.2",
+		"dotenv": "^16.0.3",
+		"env-schema": "^5.1.1",
+		"fastify": "^4.10.2",
+		"fastify-plugin": "^3.0.1"
+	},
+	"devDependencies": {}
+}

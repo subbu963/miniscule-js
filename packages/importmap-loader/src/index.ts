@@ -23,12 +23,8 @@ async function getImportMap(url: string): Promise<ImportMap> {
         let importMapJson = null;
 
         if (url.startsWith('http')) {
-            console.log('here1');
             importMapJson = await fetch(url).then((r) => r.json());
         } else {
-            console.log('here2');
-            console.log('getting import maps', url);
-
             importMapJson = JSON.parse(
                 await fs.readFile(url, { encoding: 'utf-8' }),
             );

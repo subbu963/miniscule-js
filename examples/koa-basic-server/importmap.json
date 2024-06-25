@@ -1,0 +1,5 @@
+{
+	"imports": {
+		"micro-backend1": "../micro-backend1/src/index.js"
+	}
+}
