@@ -16,7 +16,7 @@ export type IInitializeOpts = IConfig & {
 let config: IConfig;
 function shouldResolve(specifier: string): boolean {
     const { importsToResolve } = config;
-    return (importsToResolve || []).some((r) => r.test(specifier));
+    return (importsToResolve || []).some((r) => specifier.match(r));
 }
 async function getImportMap(url: string): Promise<ImportMap> {
     try {
@@ -72,6 +72,7 @@ export const resolve: ResolveHook = async function resolve(
     nextResolve,
 ) {
     const useImportMapResolver = shouldResolve(specifier);
+
     if (useImportMapResolver) {
         const { importMap } = config;
         const importMapResolvedModule = importMap.resolve(specifier);

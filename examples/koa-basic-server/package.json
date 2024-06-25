@@ -5,12 +5,13 @@
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
-		"dev": "node --import ./src/bootstrap.js ./src/index.js"
+		"dev": "node --require @subbu963/esm-polyfills --import ./src/bootstrap.js ./src/index.js"
 	},
 	"dependencies": {
 		"@koa/bodyparser": "^5.1.1",
 		"@miniscule-js/importmap-loader": "*",
 		"@miniscule-js/koa-middleware": "*",
+		"@subbu963/esm-polyfills": "^1.0.1",
 		"koa": "^2.15.3"
 	},
 	"devDependencies": {}

@@ -9,7 +9,7 @@ app.use(
         async getRoutes() {
             return [
                 {
-                    app: 'micro-backend1',
+                    app: 'my-micro-backend',
                     activeWhen: '/hello',
                 },
             ];
