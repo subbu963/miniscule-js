@@ -1,0 +1,10 @@
+{
+	"extends": "@miniscule-js/typescript-config/nextjs.json",
+	"compilerOptions": {
+		"emitDeclarationOnly": true,
+		"noEmit": false,
+		"outDir": "dist"
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
+}

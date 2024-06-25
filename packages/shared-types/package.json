@@ -1,0 +1,19 @@
+{
+	"name": "@miniscule-js/shared-types",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build": "tsc"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts"
+		},
+		"./apps": {
+			"types": "./dist/apps.d.ts"
+		},
+		"./cgi": {
+			"types": "./dist/cgi.d.ts"
+		}
+	}
+}
