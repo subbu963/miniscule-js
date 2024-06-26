@@ -64,8 +64,11 @@ export const load: LoadHook = async function load(
             source: module,
         };
     }
+
     return nextLoad(url);
 };
+// To cache bust import map modules
+const moduleVersions: Record<string, number> = {};
 export const resolve: ResolveHook = async function resolve(
     specifier,
     context,
@@ -76,8 +79,9 @@ export const resolve: ResolveHook = async function resolve(
     if (useImportMapResolver) {
         const { importMap } = config;
         const importMapResolvedModule = importMap.resolve(specifier);
+        moduleVersions[specifier] = moduleVersions[specifier] || 1;
         return {
-            url: importMapResolvedModule,
+            url: `${importMapResolvedModule}?v=${moduleVersions[specifier]++}`,
             shortCircuit: true,
         };
     }
