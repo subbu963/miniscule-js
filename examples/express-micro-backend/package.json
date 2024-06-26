@@ -1,0 +1,20 @@
+{
+	"name": "express-micro-backend",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"license": "MIT",
+	"scripts": {
+		"build": "esbuild ./src/index.js --bundle --outfile=./dist/index.js --platform=node --format=esm"
+	},
+	"dependencies": {
+		"@miniscule-js/importmap-loader": "*",
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"esbuild": "^0.21.5"
+	}
+}
