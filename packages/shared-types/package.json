@@ -11,9 +11,6 @@
 		},
 		"./apps": {
 			"types": "./dist/apps.d.ts"
-		},
-		"./cgi": {
-			"types": "./dist/cgi.d.ts"
 		}
 	}
 }
