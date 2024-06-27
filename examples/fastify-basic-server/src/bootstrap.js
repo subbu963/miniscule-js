@@ -9,6 +9,6 @@ register('@miniscule-js/importmap-loader', {
     parentURL: import.meta.url,
     data: {
         importMapUrl,
-        importsToResolve: ['@my-org/.+', '^x$'],
+        importsToResolve: ['^my-micro-backend$'],
     },
 });

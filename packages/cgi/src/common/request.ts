@@ -38,6 +38,16 @@ export default class MinisculeHttpRequest {
             res: ctx.res,
         });
     }
+    static fromFastify(req: IncomingMessage, res: ServerResponse) {
+        return new MinisculeHttpRequest({
+            path: req.url as string,
+            url: req.url as string,
+            // @ts-ignore
+            body: req.body,
+            req,
+            res,
+        });
+    }
     toJSON() {
         return {
             path: this.path,

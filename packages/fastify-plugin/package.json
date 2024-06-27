@@ -1,0 +1,26 @@
+{
+	"name": "@miniscule-js/fastify-plugin",
+	"version": "0.1.0",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"type": "module",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"@miniscule-js/cgi": "*",
+		"@miniscule-js/shared-types": "*",
+		"@miniscule-js/typescript-config": "*",
+		"@types/node": "^20.11.24",
+		"typescript": "^5.3.3"
+	},
+	"peerDependencies": {
+		"fastify": "^4.10.2"
+	},
+	"dependencies": {
+		"fastify-plugin": "^4.5.1",
+		"@fastify/middie": "^8.3.1"
+	}
+}

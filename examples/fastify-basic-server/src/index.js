@@ -1,19 +1,21 @@
-import server from './server.js';
+import fastify from 'fastify';
+import minisculePlugin from '@miniscule-js/fastify-plugin';
 
-process.on('unhandledRejection', (err) => {
-    console.error(err);
-    process.exit(1);
-});
-
+const server = fastify({});
 const port = 3001;
 const host = '0.0.0.0';
+
+await server.register(minisculePlugin, {
+    async getRoutes() {
+        return [
+            {
+                app: 'my-micro-backend',
+                activeWhen: '/hello',
+            },
+        ];
+    },
+});
+await server.ready();
 await server.listen({ host, port });
 
-for (const signal of ['SIGINT', 'SIGTERM']) {
-    process.on(signal, () =>
-        server.close().then((err) => {
-            console.log(`close application on ${signal}`);
-            process.exit(err ? 1 : 0);
-        }),
-    );
-}
+export default server;

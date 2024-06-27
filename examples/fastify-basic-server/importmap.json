@@ -1,3 +1,5 @@
 {
-	"imports": {}
+	"imports": {
+		"my-micro-backend": "../fastify-micro-backend/dist/index.js"
+	}
 }
